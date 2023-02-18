@@ -19,7 +19,7 @@ class MyComponent extends React.Component{
                 <br/><br/>
 
                 <DisplayInfor 
-                listUser = {this.state.listUsers}
+                listUsers = {this.state.listUsers}
                 />
                 {/* <hr/> */}
             </div>
