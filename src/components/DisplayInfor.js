@@ -31,18 +31,17 @@ class DisplayInfor extends React.Component {
                         {listUsers.map((user, index) => {
                             // console.log(">>> check map user", user)
 
-                                return(
-                                    <div key = {user.id} className = {+user.age > 25 ? "green": "red"}>
-                                        <div>My name is {user.name}</div>
-                                        <div>My age is {user.age}</div>
-                                        <hr/>
-                                    </div>
-                                )
+                            return(
+                                <div key = {user.id} className = {+user.age > 25 ? "green": "red"}>
+                                    <div>My name is {user.name}</div>
+                                    <div>My age is {user.age}</div>
+                                    <hr/>
+                                </div>
+                            )
                         })}
                     </div>
                 }
-            </div>
-                
+            </div>               
         )
     }
 }
