@@ -17,24 +17,41 @@ class MyComponent extends React.Component{
 
         this.setState({
             listUsers:[userObj, ...this.state.listUsers] // Lesson 7, cập nhật đầu dòng
-            //listUsers:[...this.state.listUsers, userObj] // Lesson 7, cập nhật cuối dòng
         })
     }
 
     render(){
-        return(
-            <div>
-                <AddUserInfor
-                    handleAddNewUser = {this.handleAddNewUser}
-                />
-                <br/><br/>
 
-                <DisplayInfor 
-                    listUsers = {this.state.listUsers}
-                />
-            </div>
+        // const test = 'Hoi dan it' //string
+        // const test = 45 //number
+        // const test = {name: 'Tony', age: 45} //object
+        // const test = true //boolean
+        const test = ["a", "b", "c"] //array
+        
+
+        return(
+            <>
+                {/* {test} */}
+                {/* {console.log('check test: ', test)} */}
+                {JSON.stringify(test)}
+
+                <div className ='a'>
+                    <AddUserInfor
+                        handleAddNewUser = {this.handleAddNewUser}
+                    />
+                    <br/><br/>
+
+                    <DisplayInfor 
+                        listUsers = {this.state.listUsers}
+                    />
+                </div>
+                <div className = 'b'>
+
+                </div>
+            </>
         )
     }
 }
+
 export default MyComponent
 
