@@ -13,28 +13,24 @@ class MyComponent extends React.Component{
     }
 
     handleAddNewUser = (userObj) => {
-        console.log('>>> Check data from parent: ', userObj)
 
         this.setState({
             listUsers:[userObj, ...this.state.listUsers] // Lesson 7, cập nhật đầu dòng
         })
     }
 
-    render(){
+    handleDeleteUser = (userId) => {
+        let listUsersClone = this.state.listUsers
+        listUsersClone = listUsersClone.filter(item => item.id !== userId) // xoá id trùng với id truyền vào
+        this.setState({
+            listUsers: listUsersClone
+        })
+    }
 
-        // const test = 'Hoi dan it' //string
-        // const test = 45 //number
-        // const test = {name: 'Tony', age: 45} //object
-        // const test = true //boolean
-        const test = ["a", "b", "c"] //array
-        
+    render(){     
 
         return(
             <>
-                {/* {test} */}
-                {/* {console.log('check test: ', test)} */}
-                {JSON.stringify(test)}
-
                 <div className ='a'>
                     <AddUserInfor
                         handleAddNewUser = {this.handleAddNewUser}
@@ -43,6 +39,7 @@ class MyComponent extends React.Component{
 
                     <DisplayInfor 
                         listUsers = {this.state.listUsers}
+                        handleDeleteUser = {this.handleDeleteUser}
                     />
                 </div>
                 <div className = 'b'>
