@@ -8,15 +8,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// Cách viết theo SCSS thuần:
 .app-container{
   .header-container{
-    .navbar-nav .nav-link.active{
-      color: red;
+    .navbar-nav{
+      .nav-link{
+        &.active{ // vì class active đứng ngang hàng với nav-link nên thêm dấu &
+          color: #00bfff;
+        }
+      }
     }
   }
 }
-
-
 
 
 // code {
