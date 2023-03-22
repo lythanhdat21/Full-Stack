@@ -1,11 +1,12 @@
-const HomePage = (props) =>{
-    return(
-        <div className = "homepage-container">
-            home page component
-        </div>
-    )
-}
+import videoHomepage from "../../assets/video-homepage.mp4";
 
-export default HomePage
-
-
+const HomePage = (props) => {
+  return (
+    <div className="homepage-container">
+      <video autoPlay muted loop>{/*Delete width="500px" height="500px"*/}
+        <source src={videoHomepage} type="video/mp4" />
+      </video>
+    </div>
+  );
+};
+export default HomePage;

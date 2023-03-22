@@ -1,19 +1,22 @@
 body {
   padding: 0px;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 // Cách viết theo SCSS thuần:
-.app-container{
-  .header-container{
-    .navbar-nav{
-      .nav-link{
-        &.active{ // vì class active đứng ngang hàng với nav-link nên thêm dấu &
+.app-container {
+  .header-container {
+    .navbar-nav {
+      z-index: 10; //video 52 15:52
+      opacity: 0.6; // độ mờ của chữ video 52 16:28
+      .nav-link {
+        &.active {
+          // vì class active đứng ngang hàng với nav-link nên thêm dấu & video 50
           color: #00bfff;
         }
       }
@@ -21,6 +24,11 @@ body {
   }
 }
 
+video {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
 
 // code {
 //   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -65,6 +73,3 @@ body {
 //     transform: rotate(360deg);
 //   }
 // }
-
-
-

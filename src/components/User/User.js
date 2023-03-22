@@ -1,8 +1,4 @@
-const User = (props) =>{
-    return(
-        <div>User component</div>
-    )
-}
-export default User
-
-
+const User = (props) => {
+  return <div>Usercomponent</div>;
+};
+export default User;
