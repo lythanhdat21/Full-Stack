@@ -19,11 +19,14 @@ const Header = () => {
                     
                 </Nav>
                 <Nav>
-                    <NavDropdown title="Settings" id="basic-nav-dropdown">
-                        <NavDropdown.Item >Log in</NavDropdown.Item> {/*Delete href="#action/3.1"*/}
-                        <NavDropdown.Item > Log out </NavDropdown.Item> {/*Delete href="#action/3.2"*/}
-                        <NavDropdown.Item >Profile</NavDropdown.Item> {/*Delete href="#action/3.1"*/}
-                    </NavDropdown>
+                    <button className = 'btn-login'>Log in</button>
+                    <button className = 'btn-signup'>Sign up</button>
+
+                    {/* <NavDropdown title="Settings" id="basic-nav-dropdown"> */}
+                        {/* <NavDropdown.Item >Log in</NavDropdown.Item> Delete href="#action/3.1" */}
+                        {/* <NavDropdown.Item > Log out </NavDropdown.Item> Delete href="#action/3.2" */}
+                        {/* <NavDropdown.Item >Profile</NavDropdown.Item> Delete href="#action/3.1" */}
+                    {/* </NavDropdown> */}
                 </Nav>
             </Navbar.Collapse>
         </Container>
