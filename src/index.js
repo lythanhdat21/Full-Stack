@@ -18,8 +18,9 @@ root.render(
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="users" element={<User />} />
-          <Route path="admins" element={<Admin />} />
+          {/* <Route path="admins" element={<Admin />} /> */}
         </Route>
+        <Route path="admins" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   </Provider>
@@ -29,3 +30,5 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+

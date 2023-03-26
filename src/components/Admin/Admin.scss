@@ -1,0 +1,10 @@
+.admin-container{
+    display: flex; //mặc định thằng con sẽ xếp theo hàng ngang video 54 10:11
+
+    .admin-sidebar{
+        .pro-sidebar {
+            height: 100vh !important; //thuộc tính important để ghi đè video 54 18:59
+        }
+    }
+}
+
