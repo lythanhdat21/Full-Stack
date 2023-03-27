@@ -3,6 +3,10 @@ import {ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarFooter, Sideb
 import {FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart} from "react-icons/fa";
 import sidebarBg from "../../assets/bg2.jpg";
 
+import {DiReact} from "react-icons/di"
+import {MdDashboard} from "react-icons/md"
+import './SideBar.scss'
+
 const SideBar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
 
@@ -28,31 +32,30 @@ const SideBar = (props) => {
                             whiteSpace: "nowrap",
                         }}
                     >
-                        HOI DAN IT
+                        <DiReact size = {'3em'} color = {"00bfff"} />
+                        <span> HOI DAN IT </span>
                     </div>
-                    </SidebarHeader>
+                </SidebarHeader>
 
-                    <SidebarContent>
-                        <Menu iconShape="circle">
-                            <MenuItem
-                                icon={<FaTachometerAlt />}
-                                suffix={<span className="badge red">NEW</span>}
-                            >
-                                DASHBOARD
-                            </MenuItem>
-                            <MenuItem icon={<FaGem />}>COMPONENTS</MenuItem>
-                        </Menu>
-                        <Menu iconShape="circle">
-                            <SubMenu
-                                suffix={<span className="badge yellow">3</span>}
-                                icon={<FaRegLaughWink />}
-                            >
-                                <MenuItem> 1</MenuItem>
-                                <MenuItem> 2</MenuItem>
-                                <MenuItem> 3</MenuItem>
-                            </SubMenu>
-                        </Menu>
-                    </SidebarContent>
+                <SidebarContent>
+                    <Menu iconShape="circle">
+                        <MenuItem
+                            icon = {<MdDashboard/>}
+                        >
+                            DASHBOARD
+                        </MenuItem>
+                    </Menu>
+                    <Menu iconShape="circle">
+                        <SubMenu
+                            icon = {<FaGem />}
+                            title = "Features"
+                        >
+                            <MenuItem> Quản lý Users</MenuItem>
+                            <MenuItem> Quản lý Bài Quiz</MenuItem>
+                            <MenuItem> Quản lý câu hỏi</MenuItem>
+                        </SubMenu>
+                    </Menu>
+                </SidebarContent>
 
                 <SidebarFooter style={{ textAlign: "center" }}>
                     <div
@@ -62,20 +65,22 @@ const SideBar = (props) => {
                         }}
                     >
                         <a
-                            href="https://github.com/azouaoui-med/react-pro-sidebar"
+                            // href="https://github.com/azouaoui-med/react-pro-sidebar"
+                            href = "https://haryphamdev.github.io/hoidanit-udemy/"
                             target="_blank"
                             className="sidebar-btn"
                             rel="noopener noreferrer"
                         >
-                            <FaGithub />
+                            {/* <FaGithub /> */}
                             <span
                                 style={{
                                     whiteSpace: "nowrap",
                                     textOverflow: "ellipsis",
-                                    overflow: "hidden",
+                                    overflow: "hidden"
                                 }}
                             >
-                                ViewSource
+                                &#169; Hỏi Dân IT Udemy
+                                {/* ViewSource */}
                             </span>
                         </a>
                     </div>
@@ -85,3 +90,5 @@ const SideBar = (props) => {
     );
 };
 export default SideBar;
+
+
