@@ -76,6 +76,7 @@ body {
           background: #303030;
           color: white;
           height: 40px;
+          border: none; // sẽ không còn border nữa. Lesson 56 0:39
 
           &:hover{
             background: black; // khi đưa chuột vào thì chuyển sang màu black video 53
@@ -91,6 +92,8 @@ video {
   bottom: 0;
   width: 100vw;
 }
+
+
 
 // code {
 //   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
