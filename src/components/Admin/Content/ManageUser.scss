@@ -1,0 +1,36 @@
+.modal-add-user{
+    .img-preview{ // Lesson 57
+        height: 150px;
+        border: 1px dashed #ccc;
+        border-radius: 5px; // Để bo tròn
+        display: flex; // "Preview Image" vào giữa
+        justify-content: center; // "Preview Image" vào giữa theo chiều ngang
+        align-items: center; // "Preview Image" vào giữa theo chiều dọc
+        color: #ccc; // "Preview Image" sẽ có màu nhạt
+
+        img {
+            max-width:100%;
+            max-height:100%;
+        }
+    }
+
+    .label-upload{ // Lesson 57
+        display: flex; 
+        align-items: center; // để chữ và dấu + bằng hàng với nhau
+        gap: 5px; // chữ và dấu + cách nhau 5px
+        padding: 3px 10px; // top and bottom 3px; left and right 10px
+        border-radius: 5px; // để bo tròn
+        background: #eeeeee;
+        border: none;
+        width: fit-content; // khung sẽ vừa vặn với chữ.
+        cursor: pointer; // di chuột vào sẽ có hình bàn tay
+
+        &:hover{ // Lesson 57: khi đưa chuột vào sẽ biến đổi màu
+            background-color: #dcdcdc;
+        }
+    }
+}
+
+
+
+
