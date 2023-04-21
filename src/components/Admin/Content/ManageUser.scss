@@ -1,3 +1,16 @@
+.manage-user-container{
+    padding: 10px;
+    .title{
+        font-weight: 600; //chữ đậm
+        font-size: 20px; // kích thước chữ
+    }
+    .users-content{
+        .btn-add-new{
+            margin: 15px 0; //top & bottom: 15px; left & right: 0px
+        }
+    }
+}
+
 .modal-add-user{
     .img-preview{ // Lesson 57
         height: 150px;
