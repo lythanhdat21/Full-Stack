@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {FcPlus} from 'react-icons/fc'
-import axios from 'axios'
+// import axios from 'axios'
 import { toast } from 'react-toastify';
+import { postCreateNewUser } from '../../../services/apiService'; //Lesson 50 4:40
 
 const ModalCreateUser = (props) => {
     const {show, setShow} = props // biến props là một biến object
+
     const handleClose = () => {
         setShow(false);
         setEmail("")
@@ -42,37 +44,31 @@ const ModalCreateUser = (props) => {
 
     const handSubmitCreateUser = async() => {
 
-        //validate
-        const isValidEmail = validateEmail(email)
-        if(!isValidEmail) {
-            toast.error('Invalid email')
-            // toast.success('test success')
-            // toast.info('test information')
-            return
-        }
+        // validate
+        // const isValidEmail = validateEmail(email)
+        // if(!isValidEmail) {
+        //     toast.error('Invalid email')
+        //     // toast.success('test success')
+        //     // toast.info('test information')
+        //     return
+        // }
 
         if(!password) {
             toast.error('Invalid password')
             return
         }
 
-        //submit data
-        const data = new FormData();
-        data.append('email', email);
-        data.append('password', password);
-        data.append('username', username);
-        data.append('role', role);
-        data.append('userImage', image);
-        let res = await axios.post('http://localhost:8081/api/v1/participant', data)
-        console.log('>>> check res: ', res.data)
+        let data = await postCreateNewUser (email, password, username, role, image)
 
-        if(res.data && res.data.EC === 0) {
-            toast.success(res.data.EM)
+        console.log('>>> component res: ', data)
+
+        if(data && data.EC === 0) { // Delete res
+            toast.success(data.EM) // Delete res
             handleClose() // reset lại giá trị của React
         }
 
-        if(res.data && res.data.EC !== 0) {
-            toast.error(res.data.EM)
+        if(data && data.EC !== 0) { // Delete res
+            toast.error(data.EM) // Delete res
         }
     }
 
