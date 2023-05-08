@@ -8,7 +8,12 @@ const postCreateNewUser = (email, password, username, role, image) => {
     data.append('username', username);
     data.append('role', role);
     data.append('userImage', image);
-    return axios.post('api/v1/participant', data) // Delete http://localhost:8081/
+    return axios.post('api/v1/participant', data)
 }
-export {postCreateNewUser} // Vì chúng ta muốn export ra nhiều biến
+
+const getAllUsers = () => {
+    return axios.get('api/v1/participant/all')
+}
+
+export {postCreateNewUser, getAllUsers} // Vì chúng ta muốn export ra nhiều biến
 
