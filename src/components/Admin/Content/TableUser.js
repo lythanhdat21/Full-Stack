@@ -50,7 +50,7 @@ const TableUser = (props) => {
                                     <td>
                                         <button className="btn btn-secondary">View</button> {/*class của Bootstrap */}
                                         <button className="btn btn-warning mx-3">Update</button> {/*mx-3: margin left và margin right: 3px */}
-                                        <button className = "btn btn-danger">View</button> {/*class của Bootstrap */}
+                                        <button className = "btn btn-danger">Delete</button> {/*class của Bootstrap */}
                                     </td>
                                 </tr>
                             )
