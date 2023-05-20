@@ -60,11 +60,12 @@ const ModalCreateUser = (props) => {
 
         let data = await postCreateNewUser (email, password, username, role, image)
 
-        console.log('>>> component res: ', data)
+        // console.log('>>> component res: ', data)
 
-        if(data && data.EC === 0) { // Delete res
-            toast.success(data.EM) // Delete res
+        if(data && data.EC === 0) {
+            toast.success(data.EM)
             handleClose() // reset lại giá trị của React
+            await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
         }
 
         if(data && data.EC !== 0) { // Delete res

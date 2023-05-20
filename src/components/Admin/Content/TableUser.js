@@ -1,37 +1,30 @@
-import { useEffect, useState } from "react"
-import {getAllUsers} from '../../../services/apiService'
+// import { useEffect, useState } from "react"
+// import {getAllUsers} from '../../../services/apiService'
 
 const TableUser = (props) => {
-    const [listUsers, setListUsers] = useState([])
+    const {listUsers} = props // bằng với const {listUsers} = props.listUsers
 
+    // const [listUsers, setListUsers] = useState([])
 
-    // useEffect = componentDidMount
-    // useEffect (async () => {
-    //     let res = await getAllUsers()
-    //     console.log(res)
+    // // useEffect = componentDidMount
+    // useEffect (() => {
+    //     fetchListUsers()
     // }, []) // hàm useEffect chỉ chạy đúng một lần
 
-    useEffect (() => {
-        fetchListUsers()
-    }, []) // hàm useEffect chỉ chạy đúng một lần
-
-    const fetchListUsers = async() => {
-        let res = await getAllUsers()
-        // console.log(res)
-        
-        if (res.EC === 0) {
-            setListUsers(res.DT)
-        }
-    }
-
-    // console.log('render view')
+    // const fetchListUsers = async() => {
+    //     let res = await getAllUsers()
+              
+    //     if (res.EC === 0) {
+    //         setListUsers(res.DT)
+    //     }
+    // }
 
     return(
         <>
             <table className="table table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
+                        <th scope="col">ID</th> 
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
@@ -42,8 +35,8 @@ const TableUser = (props) => {
                     {listUsers && listUsers.length > 0 &&
                         listUsers.map((item, index) => {
                             return(
-                                <tr key = {`table-users-${index}`}> {/*Để tăng hiệu năng ứng dụng React, key sẽ không bị trùng với index*/}
-                                    <th>{index + 1}</th>
+                                <tr key = {`table-users-${index}`}>
+                                    <td>{item.id}</td>
                                     <td>{item.username}</td>
                                     <td>{item.email}</td>
                                     <td>{item.role}</td>
