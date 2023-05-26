@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {FcPlus} from 'react-icons/fc'
 import { toast } from 'react-toastify';
-import { postCreateNewUser } from '../../../services/apiService'; //Lesson 50 4:40
+import { putUpdateUser } from '../../../services/apiService';
 import _ from 'lodash' // Lesson 63 20:12
 
 const ModalUpdateUser = (props) => {
@@ -17,6 +17,7 @@ const ModalUpdateUser = (props) => {
         setRole("")
         setImage("")
         setPreviewImage("")
+        props.resetUpdateData()
     }
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -58,12 +59,16 @@ const ModalUpdateUser = (props) => {
         };
 
     const handSubmitCreateUser = async() => {
-        if(!password) {
-            toast.error('Invalid password')
+        // validate
+        const isValidEmail = validateEmail(email)
+        if(!isValidEmail) {
+            toast.error('Invalid email')
+            // toast.success('test success')
+            // toast.info('test information')
             return
         }
 
-        let data = await postCreateNewUser (email, password, username, role, image)
+        let data = await putUpdateUser (dataUpdate.id, username, role, image)
 
         if(data && data.EC === 0) {
             toast.success(data.EM)
@@ -76,7 +81,6 @@ const ModalUpdateUser = (props) => {
         }
     }
 
-    // console.log ('Check data Update: ', props.dataUpdate)
     console.log ('Check data render: data Update: ', dataUpdate)
     
     return (
