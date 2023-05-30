@@ -5,12 +5,14 @@ import TableUser from "./TableUser"
 import { useEffect, useState } from "react"
 import {getAllUsers} from '../../../services/apiService'
 import ModalUpdateUser from "./ModalUpdateUser"
+import ModalViewUser from "./ModalViewUser"
 
 const ManageUser = (props) => {
     const [showModalCreateUser, setShowModalCreateUser] = useState(false)
     const [listUsers, setListUsers] = useState([])
     const [showModalUpdateUser, setShowModalUpdateUser] = useState(false)
     const [dataUpdate, setDataUpdate] = useState({}) // Vì data của user là kiểu object
+    const [showModalViewUser, setShowModalViewUser] = useState(false)
 
     // useEffect = componentDidMount
     useEffect (() => {
@@ -33,6 +35,11 @@ const ManageUser = (props) => {
         setDataUpdate({})
     }
 
+    const handleClickBtnView = (user) => {
+        setShowModalViewUser (true)
+        setDataUpdate(user)
+    }
+
     return (
         <div className = "manage-user-container">
             <div className = "title">
@@ -49,6 +56,7 @@ const ManageUser = (props) => {
                     <TableUser 
                         listUsers = {listUsers} // listUsers = listUsers của TableUser.js
                         handleClickBtnUpdate = {handleClickBtnUpdate}
+                        handleClickBtnView = {handleClickBtnView}
                     />
                 </div>
                 <ModalCreateUser 
@@ -61,6 +69,13 @@ const ManageUser = (props) => {
                     setShow = {setShowModalUpdateUser} // setShow = setShow của ModalUpdateUser.js
                     dataUpdate = {dataUpdate}
                     fetchListUsers = {fetchListUsers} // fetchListUsers = fetchListUsers của ModalUpdateUser.js
+                    resetUpdateData = {resetUpdateData}
+                />
+
+                <ModalViewUser
+                    show = {showModalViewUser}
+                    setShow = {setShowModalViewUser} // setShow = setShow của ModalViewUser.js
+                    dataUpdate = {dataUpdate}
                     resetUpdateData = {resetUpdateData}
                 />
             </div>

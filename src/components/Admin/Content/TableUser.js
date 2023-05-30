@@ -23,10 +23,15 @@ const TableUser = (props) => {
                                     <td>{item.email}</td>
                                     <td>{item.role}</td>
                                     <td>
-                                        <button className="btn btn-secondary">View</button> {/*class của Bootstrap */}
+                                        <button 
+                                            className="btn btn-secondary"
+                                            onClick = {() => props.handleClickBtnView(item)}
+                                        >
+                                            View
+                                        </button> {/*class của Bootstrap */}
                                         <button 
                                             className="btn btn-warning mx-3"
-                                            onClick={() => props.handleClickBtnUpdate(item)}
+                                            onClick = {() => props.handleClickBtnUpdate(item)}
 
                                         >
                                             Update
