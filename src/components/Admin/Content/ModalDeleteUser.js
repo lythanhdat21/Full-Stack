@@ -1,15 +1,27 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { deleteUser } from '../../../services/apiService';
+import { toast } from 'react-toastify';
 
 const ModalDeleUser = (props) => {
     const {show, setShow, dataDelete} = props
 
   const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
 
-  const handleSubmitDeleteUser = () => {
-    alert('alert me')
+  const handleSubmitDeleteUser = async() => {
+    // alert('alert me')
+
+    let data = await deleteUser (dataDelete.id)
+      if(data && data.EC === 0) {
+        toast.success(data.EM)
+        handleClose() // reset lại giá trị của React
+        await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
+      }
+
+      if(data && data.EC !== 0) {
+            toast.error(data.EM) 
+      }
   }
 
   return (
@@ -31,7 +43,7 @@ const ModalDeleUser = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={ () => {handleSubmitDeleteUser()}}> {/* Delete handleClose */}
+          <Button variant="primary" onClick={ () => {handleSubmitDeleteUser()}}>
             Confirm
           </Button>
         </Modal.Footer>

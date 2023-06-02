@@ -44,7 +44,6 @@ const ManageUser = (props) => {
     }
 
     const handleClickBtnDelete =(user) => {
-        // console.log("Data Delete: ", user)
         setShowModalDeleteUser (true)
         setDataDelelete(user)
     }
@@ -92,6 +91,7 @@ const ManageUser = (props) => {
                     show = {showModalDeleteUser}
                     setShow = {setShowModalDeleteUser}
                     dataDelete = {dataDelete}
+                    fetchListUsers = {fetchListUsers} // Sau khi xóa thành công, chúng ta cần gọi lại danh sách user
                 />
             </div>
         </div>

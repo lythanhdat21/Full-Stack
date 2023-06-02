@@ -59,9 +59,6 @@ const ModalCreateUser = (props) => {
         }
 
         let data = await postCreateNewUser (email, password, username, role, image)
-
-        // console.log('>>> component res: ', data)
-
         if(data && data.EC === 0) {
             toast.success(data.EM)
             handleClose() // reset lại giá trị của React
