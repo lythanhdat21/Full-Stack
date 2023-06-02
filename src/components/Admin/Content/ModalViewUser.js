@@ -28,7 +28,7 @@ const ModalViewUser = (props) => {
 
     // useEffect = componentDidMount
     useEffect (() =>{
-        console.log('>>> Run use Effect: ', dataUpdate)
+        // console.log('>>> Run use Effect: ', dataUpdate)
         if(!_.isEmpty(dataUpdate)){ // Nếu biến dataUpdate không rỗng
             //Update State
             setEmail(dataUpdate.email)
@@ -79,7 +79,7 @@ const ModalViewUser = (props) => {
         }
     }
 
-    console.log ('Check data render: data Update: ', dataUpdate)
+    // console.log ('Check data render: data Update: ', dataUpdate)
     
     return (
         <>

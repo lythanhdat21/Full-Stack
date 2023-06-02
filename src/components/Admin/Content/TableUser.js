@@ -28,7 +28,7 @@ const TableUser = (props) => {
                                             onClick = {() => props.handleClickBtnView(item)}
                                         >
                                             View
-                                        </button> {/*class của Bootstrap */}
+                                        </button>
                                         <button 
                                             className="btn btn-warning mx-3"
                                             onClick = {() => props.handleClickBtnUpdate(item)}
@@ -36,7 +36,12 @@ const TableUser = (props) => {
                                         >
                                             Update
                                         </button> {/*mx-3: margin left và margin right: 3px */}
-                                        <button className = "btn btn-danger">Delete</button> {/*class của Bootstrap */}
+                                        <button 
+                                            className = "btn btn-danger"
+                                            onClick={() => props.handleClickBtnDelete(item)}
+                                        >
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                             )
