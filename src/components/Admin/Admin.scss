@@ -1,22 +1,25 @@
-.admin-container{
+.admin-container {
     display: flex; //mặc định thằng con sẽ xếp theo hàng ngang video 54 10:11
 
-    .admin-sidebar{
+    .admin-sidebar {
         .pro-sidebar {
             height: 100vh !important; //thuộc tính important để ghi đè video 54 18:59
         }
     }
 
-    .admin-content{
+    .admin-content {
         width: 100%;
-        .admin-header{
+
+        .admin-header {
             height: 40px;
             border: 1px solid green;
         }
     }
 
-    .admin-main{
-        // border: 1px solid red;
+    .admin-main {
+        .user-pagination {
+            display: flex;
+            justify-content: center;
+        }
     }
 }
-
