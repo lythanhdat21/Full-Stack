@@ -5,18 +5,18 @@ import { deleteUser } from '../../../services/apiService';
 import { toast } from 'react-toastify';
 
 const ModalDeleUser = (props) => {
-    const {show, setShow, dataDelete} = props
+  const {show, setShow, dataDelete} = props
 
   const handleClose = () => setShow(false);
 
   const handleSubmitDeleteUser = async() => {
-    // alert('alert me')
-
     let data = await deleteUser (dataDelete.id)
       if(data && data.EC === 0) {
         toast.success(data.EM)
         handleClose() // reset lại giá trị của React
-        await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
+        // await props.fetchListUsers() // lấy tất cả người dùng
+        props.setCurrentPage (1) // cập nhật trạng thái người dùng ở trang 1
+        await props.fetchListUsersWithPaginate(1) 
       }
 
       if(data && data.EC !== 0) {

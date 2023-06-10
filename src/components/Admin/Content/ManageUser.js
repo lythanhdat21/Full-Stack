@@ -17,8 +17,9 @@ const ManageUser = (props) => {
     const [showModalViewUser, setShowModalViewUser] = useState(false)
     const [showModalDeleteUser, setShowModalDeleteUser] = useState(false)
     const [dataDelete, setDataDelelete] = useState({})
-    const LIMIT_USER = 6
+    const LIMIT_USER = 3
     const [pageCount, setpageCount] = useState(0) // Không có người dùng thì không hiển thị thannh phân trang
+    const [currentPage, setCurrentPage] = useState(1) // Người dùng đang ở trang nào
 
     // useEffect = componentDidMount
     useEffect (() => {
@@ -82,12 +83,17 @@ const ManageUser = (props) => {
                         handleClickBtnDelete = {handleClickBtnDelete}
                         fetchListUsersWithPaginate ={fetchListUsersWithPaginate}
                         pageCount = {pageCount}
+                        currentPage = {currentPage}
+                        setCurrentPage = {setCurrentPage}
                     />
                 </div>
                 <ModalCreateUser 
                     show = {showModalCreateUser} // show = show của ModalCreateUser.js
                     setShow = {setShowModalCreateUser} // setShow = setShow của ModalCreateUser.js
                     fetchListUsers = {fetchListUsers} // fetchListUsers = fetchListUsers của ModalCreateUser.js
+                    fetchListUsersWithPaginate ={fetchListUsersWithPaginate}
+                    currentPage = {currentPage}
+                    setCurrentPage = {setCurrentPage}
                 />
                 <ModalUpdateUser
                     show = {showModalUpdateUser}
@@ -95,6 +101,9 @@ const ManageUser = (props) => {
                     dataUpdate = {dataUpdate}
                     fetchListUsers = {fetchListUsers} // fetchListUsers = fetchListUsers của ModalUpdateUser.js
                     resetUpdateData = {resetUpdateData}
+                    fetchListUsersWithPaginate ={fetchListUsersWithPaginate}
+                    currentPage = {currentPage}
+                    setCurrentPage = {setCurrentPage}
                 />
 
                 <ModalViewUser
@@ -102,12 +111,19 @@ const ManageUser = (props) => {
                     setShow = {setShowModalViewUser} // setShow = setShow của ModalViewUser.js
                     dataUpdate = {dataUpdate}
                     resetUpdateData = {resetUpdateData}
+                    fetchListUsersWithPaginate ={fetchListUsersWithPaginate}
+                    currentPage = {currentPage}
+                    setCurrentPage = {setCurrentPage}
                 />
+
                 <ModalDeleUser
                     show = {showModalDeleteUser}
                     setShow = {setShowModalDeleteUser}
                     dataDelete = {dataDelete}
                     fetchListUsers = {fetchListUsers} // Sau khi xóa thành công, chúng ta cần gọi lại danh sách user
+                    fetchListUsersWithPaginate ={fetchListUsersWithPaginate}
+                    currentPage = {currentPage}
+                    setCurrentPage = {setCurrentPage}
                 />
             </div>
         </div>

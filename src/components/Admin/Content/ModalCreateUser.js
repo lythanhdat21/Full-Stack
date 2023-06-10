@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {FcPlus} from 'react-icons/fc'
-// import axios from 'axios'
 import { toast } from 'react-toastify';
 import { postCreateNewUser } from '../../../services/apiService'; //Lesson 50 4:40
 
@@ -44,15 +43,6 @@ const ModalCreateUser = (props) => {
 
     const handSubmitCreateUser = async() => {
 
-        // validate
-        // const isValidEmail = validateEmail(email)
-        // if(!isValidEmail) {
-        //     toast.error('Invalid email')
-        //     // toast.success('test success')
-        //     // toast.info('test information')
-        //     return
-        // }
-
         if(!password) {
             toast.error('Invalid password')
             return
@@ -62,7 +52,9 @@ const ModalCreateUser = (props) => {
         if(data && data.EC === 0) {
             toast.success(data.EM)
             handleClose() // reset lại giá trị của React
-            await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
+            // await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
+            props.setCurrentPage (1) // cập nhật trạng thái người dùng ở trang 1
+            await props.fetchListUsersWithPaginate(1) 
         }
 
         if(data && data.EC !== 0) { // Delete res

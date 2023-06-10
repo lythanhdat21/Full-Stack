@@ -69,11 +69,12 @@ const ModalUpdateUser = (props) => {
         }
 
         let data = await putUpdateUser (dataUpdate.id, username, role, image)
-
         if(data && data.EC === 0) {
             toast.success(data.EM)
             handleClose() // reset lại giá trị của React
-            await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
+            // await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
+            // props.setCurrentPage (1) // cập nhật trạng thái người dùng ở trang 1
+            await props.fetchListUsersWithPaginate(props.currentPage)
         }
 
         if(data && data.EC !== 0) { // Delete res

@@ -58,28 +58,26 @@ const ModalViewUser = (props) => {
             );
         };
 
-    const handSubmitCreateUser = async() => {
-        // validate
-        const isValidEmail = validateEmail(email)
-        if(!isValidEmail) {
-            toast.error('Invalid email')
-            return
-        }
+    // const handSubmitCreateUser = async() => {
+    //     // validate
+    //     const isValidEmail = validateEmail(email)
+    //     if(!isValidEmail) {
+    //         toast.error('Invalid email')
+    //         return
+    //     }
 
-        let data = await putUpdateUser (dataUpdate.id, username, role, image)
+    //     let data = await putUpdateUser (dataUpdate.id, username, role, image)
 
-        if(data && data.EC === 0) {
-            toast.success(data.EM)
-            handleClose() // reset lại giá trị của React
-            await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
-        }
+    //     if(data && data.EC === 0) {
+    //         toast.success(data.EM)
+    //         handleClose() // reset lại giá trị của React
+    //         await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
+    //     }
 
-        if(data && data.EC !== 0) { // Delete res
-            toast.error(data.EM) // Delete res
-        }
-    }
-
-    // console.log ('Check data render: data Update: ', dataUpdate)
+    //     if(data && data.EC !== 0) { // Delete res
+    //         toast.error(data.EM) // Delete res
+    //     }
+    // }
     
     return (
         <>

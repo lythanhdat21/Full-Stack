@@ -8,6 +8,7 @@ const TableUserPaginate = (props) => {
     const handlePageClick = (event) => {
         console.log(`User requested page number ${event.selected}`);
         props.fetchListUsersWithPaginate(+event.selected + 1)
+        props.setCurrentPage(+event.selected + 1)// mỗi lần chuyển trang, cập nhật người dùng đang ở đâu
     };
 
     return(
@@ -85,6 +86,7 @@ const TableUserPaginate = (props) => {
                     containerClassName="pagination"
                     activeClassName="active"
                     renderOnZeroPageCount={null}
+                    forcePage = {props.currentPage - 1} // 7:21 video 69
                 />
             </div>
         </>
