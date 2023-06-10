@@ -23,7 +23,7 @@ const ManageUser = (props) => {
 
     // useEffect = componentDidMount
     useEffect (() => {
-        fetchListUsers()
+        // fetchListUsers()
         fetchListUsersWithPaginate(1) // Chúng ta sẽ lấy phần tử ở trang đầu tiên
 
     }, []) // hàm useEffect chỉ chạy đúng một lần
