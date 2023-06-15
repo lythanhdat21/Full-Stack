@@ -33,5 +33,13 @@ const getUserWithPaginate = (page, limit) => {
     return axios.get(`api/v1/participant?page=${page}&limit=${limit}`) // page, limit của backend
 }
 
-export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate}  
+const postLogin = (userEmail, userPassword) => {
+        return axios.post(`api/v1/login`, {email: userEmail, password: userPassword})
+}
+//Hoặc:
+// const postLogin = (email, password) => {
+//         return axios.post(`api/v1/login`, {user, password})
+// }
+
+export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin}  
 

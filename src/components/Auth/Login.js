@@ -1,17 +1,36 @@
 import './Login.scss'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { postLogin } from '../../services/apiService'
+import { toast } from 'react-toastify';
 
 const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const handleLogin = () => {
-        alert('login')
+    const navigate = useNavigate()
+
+    const handleLogin = async() => {
+        // validate
+
+        //submit Apis
+        let data = await postLogin (email, password)
+        // console.log('>>> Check res: ', res)
+
+        if(data && data.EC === 0) {
+            toast.success(data.EM)
+            navigate('/')
+        }
+
+        if(data && data.EC !== 0) { // Delete res
+            toast.error(data.EM) // Delete res
+        }
     }
 
     return(
         <div className='login-container'>           
             <div className='header'>
-                Don't have an account yet?
+                <span>Don't have an account yet?</span>
+                <button>Sign Up</button>
             </div>
             <div className='title col-4 mx-auto'>
                 HoidanIT
@@ -44,7 +63,12 @@ const Login = (props) => {
                         className='btn-submit'
                         onClick={() => handleLogin()}
                     >Login to HoidanIT</button>
-                </div>           
+                </div>
+                <div className='text-center'> {/*hoặc className='title mx-auto' */}
+                    <span className = "back" onClick ={() => {navigate('/')}}>
+                        &#60; &#60; Go to Homepage
+                    </span>
+                </div>         
             </div>
         </div>
     )
