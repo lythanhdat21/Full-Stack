@@ -9,8 +9,28 @@ const Login = (props) => {
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
 
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+        };
+
     const handleLogin = async() => {
         // validate
+        const isValidEmail = validateEmail(email)
+        if(!isValidEmail) {
+            toast.error('Invalid email')
+            // toast.success('test success')
+            // toast.info('test information')
+            return
+        }
+
+        if(!password) {
+            toast.error('Invalid password')
+            return
+        }
 
         //submit Apis
         let data = await postLogin (email, password)
@@ -29,10 +49,10 @@ const Login = (props) => {
         <div className='login-container'>           
             <div className='header'>
                 <span>Don't have an account yet?</span>
-                <button >Sign Up</button>
+                <button onClick={() => navigate('/register')}>Sign Up</button>
             </div>
             <div className='title col-4 mx-auto'>
-                HoidanIT
+                HoidanIT &amp; Tony {/*html entities */}
             </div>
             <div className='welcome col-4 mx-auto'>
                 Hello, who’s this?
