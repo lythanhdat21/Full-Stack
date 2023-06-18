@@ -8,8 +8,11 @@ const Header = () => {
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        // alert('me')
         navigate('/login')
+    }
+
+    const handleRegister = () => {
+        navigate('/register')
     }
 
     return (
@@ -25,7 +28,7 @@ const Header = () => {
                 </Nav>
                 <Nav>
                     <button className = 'btn-login' onClick = {() => handleLogin()}>Log in</button>
-                    <button className = 'btn-signup'>Sign up</button>
+                    <button className = 'btn-signup' onClick = {() => handleRegister()}>Sign up</button>
                 </Nav>
             </Navbar.Collapse>
         </Container>

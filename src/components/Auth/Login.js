@@ -14,7 +14,6 @@ const Login = (props) => {
 
         //submit Apis
         let data = await postLogin (email, password)
-        // console.log('>>> Check res: ', res)
 
         if(data && data.EC === 0) {
             toast.success(data.EM)
@@ -30,7 +29,7 @@ const Login = (props) => {
         <div className='login-container'>           
             <div className='header'>
                 <span>Don't have an account yet?</span>
-                <button>Sign Up</button>
+                <button >Sign Up</button>
             </div>
             <div className='title col-4 mx-auto'>
                 HoidanIT
