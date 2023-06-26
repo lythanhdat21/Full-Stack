@@ -1,6 +1,7 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
 import { Outlet, Link } from "react-router-dom";
+import "./App.css"
 
 const App = () => {
   return (
@@ -19,3 +20,4 @@ const App = () => {
   );
 };
 export default App;
+

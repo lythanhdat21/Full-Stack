@@ -8,7 +8,7 @@ import DashBoard from "./components/Admin/Content/DashBoard";
 import Login from "./components/Auth/Login";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Register from "./components/Auth/Register";
+import Register from "./components/Auth/Register1";
 
 const Layout = (props) => {
     return(

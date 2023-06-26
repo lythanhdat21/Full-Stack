@@ -8,9 +8,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (min-width: 1350px) { // kéo rộng hay thu hẹp hàng chữ video 53 12:52
-  .container, .container-lg, .container-md, .container-sm, .container-xl {
-      max-width: 1300px !important;
+@media (min-width: 1350px) {
+
+  // kéo rộng hay thu hẹp hàng chữ video 53 12:52
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1300px !important;
   }
 }
 
@@ -23,24 +29,53 @@ body {
       padding: 0 15px;
       border: 1px solid #535353;
       height: 40px;
+      //...................................
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: all 0.3s ease;
+
+      &::before {
+        content: "";
+        width: 0;
+        height: 300%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        background-color: #08c550;
+        display: block;
+        z-index: -1;
+        transition: all 0.5s ease;
+      }
+
+      &:hover::before {
+        width: 105%;
+      }
+
+      &:hover {
+        color: #fff;
+      }
     }
 
-    .btn-signup{
+    .btn-signup {
       border-radius: 5px;
-      padding: 0 15px;
+      // padding: 0 15px;
       background: #303030;
       color: white;
       height: 40px;
 
-      &:hover{
+      &:hover {
         background: black; // khi đưa chuột vào thì chuyển sang màu black video 53 12:00
       }
     }
-    
-    .navbar{
+
+    .navbar {
       padding-top: 20px; // Khoảng cách đầu hàng 20px, video 53 9:18
       z-index: 10; //video 52 15:52
-      background-color: rgba(0,0,0,0) !important; // thuộc tính !important dùng để ghi đè background video 53 1:03
+      background-color: rgba(0, 0, 0, 0) !important; // thuộc tính !important dùng để ghi đè background video 53 1:03
+
       .nav-link {
         &.active {
           // vì class active đứng ngang hàng với nav-link nên thêm dấu & video 50
@@ -50,7 +85,7 @@ body {
     }
   }
 
-  .homepage-container{
+  .homepage-container {
     .homepage-content {
       position: relative;
       width: 50%;
@@ -78,7 +113,7 @@ body {
           height: 40px;
           border: none; // sẽ không còn border nữa. Lesson 56 0:39
 
-          &:hover{
+          &:hover {
             background: black; // khi đưa chuột vào thì chuyển sang màu black video 53
           }
         }

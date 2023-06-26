@@ -1,4 +1,4 @@
-import './Register.scss'
+import './Register.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
@@ -26,8 +26,6 @@ const Register = (props) => {
         const isValidEmail = validateEmail(email)
         if(!isValidEmail) {
             toast.error('Invalid email')
-            // toast.success('test success')
-            // toast.info('test information')
             return
         }
         
@@ -45,28 +43,23 @@ const Register = (props) => {
     }
 
     return(
-            <div className='register-container'> 
-                <div className='title col-4 mx-auto'>
-                    HoidanIT
-                </div>
-                <div className='welcome col-4 mx-auto'>
-                    Start your journey?
-                </div>
-                <div className='content-form col-4 mx-auto'>
-                    <div className='form-group'>
-                        <label>Email (*)</label>
+        <section>
+            <div className='register-box'> 
+                <form action ="">
+                    <h2>Hoi Dan IT</h2>
+                    <div className='input-box'>
                         <input 
                             type = {'email'} 
-                            className = "form-control"
+                            required
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
                         />
+                        <label>Email (*)</label>
                     </div>  
-                    <div className='form-group pass-group'>
-                        <label>Password (*)</label>
+                    <div className='input-box'> 
                         <input 
                             type = {isShowPassword ? 'text' : 'password'}
-                            className = "form-control "
+                            required
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
                         />
@@ -82,30 +75,39 @@ const Register = (props) => {
                                     <AiFillEye/>
                                 </span>
                         }
+                        <label>Password (*)</label>
                     </div>
-                    <div className='form-group'>
-                        <label>Username</label>
+                    <div className='input-box'>
                         <input 
-                            type = {'username'} 
-                            className = "form-control"
+                            type = {'username'}
+                            required
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
                         />
+                        <label>User name</label>
+                        <i></i>
                     </div>
-                    <div>
-                        <button 
-                            className='btn-submit'
-                            onClick={() => handleRegister()}
-                        >Create my free account</button>
-                    </div>
+                    <button 
+                        href = "#"
+                        onClick={() => handleRegister()}
+                    >
+                        Create my free account
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                     <div className='text-center'> {/*hoặc className='title mx-auto' */}
                         <span className = "back" onClick ={() => {navigate('/')}}>
                             &#60; &#60; Go to Homepage
                         </span>
-                    </div>         
-                </div>
+                    </div> 
+                </form>   
             </div>
+        </section>
     )
 }
 export default Register
+
 

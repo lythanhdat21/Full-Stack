@@ -28,7 +28,11 @@ const Header = () => {
                 </Nav>
                 <Nav>
                     <button className = 'btn-login' onClick = {() => handleLogin()}>Log in</button>
-                    <button className = 'btn-signup' onClick = {() => handleRegister()}>Sign up</button>
+                    <div className='aaa'>
+                        <button className = 'btn-signup' onClick = {() => handleRegister()}>
+                            <span>Sign up</span>
+                        </button>
+                    </div>
                 </Nav>
             </Navbar.Collapse>
         </Container>

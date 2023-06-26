@@ -15,6 +15,32 @@
             &:hover {
                 background-color: white; // đưa chuột vào thành màu trắng
             }
+
+            //...........................................
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+
+            &::before {
+                content: "";
+                width: 0;
+                height: 300%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+                background-color: #08c550;
+                display: block;
+                z-index: -1;
+                transition: all 0.5s ease;
+            }
+
+            &:hover::before {
+                width: 105%;
+            }
+
         }
     }
 
@@ -49,6 +75,7 @@
         .back {
             cursor: pointer;
             text-decoration: underline; // gạch chân
+            color: black;
         }
 
     }

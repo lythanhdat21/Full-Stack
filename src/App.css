@@ -1,0 +1,81 @@
+.aaa button {
+    display: inline-block;
+    position: relative;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.09)
+}
+
+.aaa button::before,
+.aaa button::after {
+    content: "";
+    width: 0;
+    height: 5px;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: yellow;
+}
+
+span::before,
+span::after {
+    content: "";
+    width: 5px;
+    height: 0;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: yellow;
+}
+
+button:hover::before,
+button:hover::after {
+    width: 100%;
+}
+
+button:hover span::before,
+button:hover span::after {
+    height: 100%;
+}
+
+/* ..........button ................*/
+.btn-signup::before,
+.btn-signup::after {
+    transition-delay: 0.2s;
+}
+
+.btn-signup span::before,
+.btn-signup span::after {
+    transition-delay: 0s;
+}
+
+.btn-signup::before {
+    right: 0;
+    top: 0;
+}
+
+.btn-signup::after {
+    left: 0;
+    bottom: 0;
+}
+
+.btn-signup span::before {
+    left: 0;
+    top: 0;
+}
+
+.btn-signup span::after {
+    right: 0;
+    bottom: 0;
+}
+
+.btn-signup:hover::before,
+.btn-signup:hover::after {
+    transition-delay: 0s;
+}
+
+.btn-signup:hover span::before,
+.btn-signup:hover span::after {
+    transition-delay: 0.2s;
+}
