@@ -36,7 +36,6 @@ const ManageUser = (props) => {
                 <div className="table-users-container">
                     <TableUser 
                         listUsers = {listUsers} // listUsers = listUsers của TableUser.js
-                        handleClickBtnUpdate = {handleClickBtnUpdate}
                     />
                 </div>
                 <ModalCreateUser 
@@ -47,7 +46,6 @@ const ManageUser = (props) => {
             </div>
         </div>
     )
-    
 }
 export default ManageUser
 
