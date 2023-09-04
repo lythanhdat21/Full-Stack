@@ -14,14 +14,14 @@ const ModalCreateUser = (props) => {
         setEmail("")
         setPassword("")
         setUsername("")
-        setRole("")
+        setRole("USER")
         setImage("")
         setPreviewImage("")
     }
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
-    const [role, setRole] = useState("ADMIN")
+    const [role, setRole] = useState("USER")
     const [image, setImage] = useState("")
     const [previewImage, setPreviewImage] = useState("")
 
