@@ -14,7 +14,7 @@ const ModalUpdateUser = (props) => {
         setEmail("")
         setPassword("")
         setUsername("")
-        setRole("")
+        setRole("USER")
         setImage("")
         setPreviewImage("")
     }
