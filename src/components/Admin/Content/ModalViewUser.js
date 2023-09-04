@@ -14,7 +14,7 @@ const ModalViewUser = (props) => {
         setEmail("")
         setPassword("")
         setUsername("")
-        setRole("")
+        setRole("USER")
         setImage("")
         setPreviewImage("")
         props.resetUpdateData()
