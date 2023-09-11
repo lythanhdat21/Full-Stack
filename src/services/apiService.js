@@ -38,7 +38,7 @@ const postLogin = (userEmail, userPassword) => {
 }
 //Hoặc:
 // const postLogin = (email, password) => {
-//         return axios.post(`api/v1/login`, {user, password})
+//         return axios.post(`api/v1/login`, {email, password})
 // }
 
 export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin}  
