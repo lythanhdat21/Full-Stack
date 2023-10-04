@@ -18,7 +18,7 @@ const ManageUser = (props) => {
     const [showModalDeleteUser, setShowModalDeleteUser] = useState(false)
     const [dataDelete, setDataDelelete] = useState({})
     const LIMIT_USER = 3
-    const [pageCount, setpageCount] = useState(0) // Không có người dùng thì không hiển thị thannh phân trang
+    const [pageCount, setpageCount] = useState(0) // Không có người dùng thì không hiển thị thanh phân trang
     const [currentPage, setCurrentPage] = useState(1) // Người dùng đang ở trang nào
 
     // useEffect = componentDidMount

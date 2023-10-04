@@ -1,4 +1,3 @@
-
 import { INCREMENT, DECREMENT } from '../action/counterAction';
 const INITIAL_STATE = {
     count: 0,
@@ -20,3 +19,5 @@ const countReducer = (state = INITIAL_STATE, action) => {
 };
 
 export default countReducer;
+
+

@@ -45,7 +45,7 @@ const Register = (props) => {
     return(
         <section>
             <div className='register-box'> 
-                <form action ="">
+                {/* <form action =""> */}
                     <h2>Hoi Dan IT</h2>
                     <div className='input-box'>
                         <input 
@@ -77,6 +77,7 @@ const Register = (props) => {
                         }
                         <label>Password (*)</label>
                     </div>
+
                     <div className='input-box'>
                         <input 
                             type = {'username'}
@@ -87,6 +88,7 @@ const Register = (props) => {
                         <label>User name</label>
                         <i></i>
                     </div>
+
                     <button 
                         href = "#"
                         onClick={() => handleRegister()}
@@ -98,12 +100,13 @@ const Register = (props) => {
                         <span></span>
                         <span></span>
                     </button>
+                    
                     <div className='text-center'> {/*hoặc className='title mx-auto' */}
                         <span className = "back" onClick ={() => {navigate('/')}}>
                             &#60; &#60; Go to Homepage
                         </span>
-                    </div> 
-                </form>   
+                    </div>   
+                {/* </form>  */}
             </div>
         </section>
     )
