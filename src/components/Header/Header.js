@@ -36,7 +36,7 @@ const Header = () => {
                             <button className = 'btn-login' onClick = {() => handleLogin()}>Log in</button>
                             <div className='aaa'>
                                 <button className = 'btn-signup' onClick = {() => handleRegister()}>
-                                    <span>Sign up</span>
+                                    <span className='bbb'>Sign up</span>
                                 </button>
                             </div>
                         </>

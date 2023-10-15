@@ -19,8 +19,8 @@
     background: yellow;
 }
 
-span::before,
-span::after {
+.bbb::before,
+.bbb::after {
     content: "";
     width: 5px;
     height: 0;
