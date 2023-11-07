@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"; // Để lấy State của Redux
 const HomePage = (props) => {
   const account = useSelector(state => state.user.account)
   const isAuthenticated = useSelector(state => state.user.isAuthenticated)
-  console.log ("account: ", account, "isAuthenticated: ", isAuthenticated)
+  // console.log ("account: ", account, "isAuthenticated: ", isAuthenticated)
 
   return (
     <div className="homepage-container">

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import User from "./components/User/User";
+// import User from "./components/User/User";
 import Admin from "./components/Admin/Admin";
 import HomePage from "./components/Home/HomePage";
 import ManageUser from "./components/Admin/Content/ManageUser";
@@ -9,6 +9,7 @@ import Login from "./components/Auth/Login";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from "./components/Auth/Register1";
+import ListQuiz from "./components/User/ListQuiz";
 
 const Layout = (props) => {
     return(
@@ -16,7 +17,7 @@ const Layout = (props) => {
             <Routes>
                 <Route path="/" element={<App />}>
                     <Route index element={<HomePage />} /> {/*Nội dung hiển thị mặc định*/}
-                    <Route path="users" element={<User />} />
+                    <Route path="users" element={<ListQuiz />} />
                 </Route>
 
                 <Route path="/admins" element={<Admin />} >
