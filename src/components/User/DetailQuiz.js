@@ -1,11 +1,12 @@
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import { getDataQuiz } from "../../services/apiService"
 import _ from "lodash"
+import "./DetailQuiz.scss"
 
 const DetailQuiz = (props) => {
     const params = useParams()
-    // console.log("check params: ", params)
+    const location = useLocation() // để biết người dùng từ trang nào chạy qua
     const quizId = params.id
 
     useEffect(() => {
@@ -34,7 +35,7 @@ const DetailQuiz = (props) => {
                 })
                 console.log('value: ', value, ' key: ', key)
 
-                return { questionId: key, answers: answers, questionDescription, image } // Delete detail
+                return { questionId: key, answers: answers, questionDescription, image }
             })
             .value()
             console.log(data)
@@ -43,10 +44,32 @@ const DetailQuiz = (props) => {
     
     return (
         <div className="detail-quiz-container">
-            DetailQuiz
+            <div className="left-content">
+                <div className="title">
+                    Quiz {quizId}: {location?.state?.quizTitle}
+                </div>
+                <hr/>
+                <div className="q-body">
+                    <img/>
+                </div>
+                <div className="q-content">
+                    <div className = "question">Question 1: How are you doing?</div>
+                    <div className = "answer">
+                        <div className="a-child">A. fdagwer</div>
+                        <div className="a-child">B. fdagwer</div>
+                        <div className="a-child">C. fdagwer</div>
+                    </div>
+                </div>
+                <div className = "footer">
+                    <button className="btn btn-secondary">Prev</button>
+                    <button className="btn btn-primary">Next</button>
+                </div>
+            </div>
+            <div className="right-content">
+                count down
+            </div>
         </div>
     )
 }
 export default DetailQuiz
-
 
