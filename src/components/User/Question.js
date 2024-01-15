@@ -6,11 +6,22 @@ const Question = (props) => {
         return(<></>)
     }
 
+    const handleHanleCheckbox = (event, aId, qId) => { // Delete id
+        // console.log('check: ', event.target.checked)
+        // console.log(">>> data props: ", data, id)
+        // console.log(">>> data props: ", aId, qId)
+        props.handleCheckbox(aId, qId)
+    }
+
     return(
         <>
-            {data.image && // Trong trường hợp có ảnh thì render div dưới này
+            {data.image ?
                 <div className='q-image'>
                     <img src = {`data: image/jpeg; base64, ${data.image}`}/>
+                </div>
+                :
+                <div className = 'q-image'>
+
                 </div>
             }
 
@@ -20,14 +31,15 @@ const Question = (props) => {
                 data.answers.map((a, index) => {
                     return(
                         <div key = {`answer - ${index}`} className="a-child">
-                            <div class="form-check">
+                            <div className="form-check">
                                 <input 
-                                    class="form-check-input" 
-                                    type="checkbox" 
-                                    value="" 
+                                    className="form-check-input" 
+                                    type="checkbox"
+                                    checked = {a.isSelected} 
+                                    onChange={(event) => handleHanleCheckbox(event, a.id, data.questionId)}
                                 />
                                 <label 
-                                    class="form-check-label" 
+                                    className="form-check-label" 
                                 >
                                     {a.description}
                                 </label>
@@ -42,4 +54,3 @@ const Question = (props) => {
 export default Question
 
 
- 
