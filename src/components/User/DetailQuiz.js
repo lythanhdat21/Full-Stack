@@ -18,7 +18,6 @@ const DetailQuiz = (props) => {
 
     const fetchQuestions = async() => {
         let res = await getDataQuiz(quizId)
-        // console.log('>>> check question: ', res)
         if (res && res.EC === 0) {
             let raw = res.DT
             let data = _.chain(raw)
@@ -35,18 +34,14 @@ const DetailQuiz = (props) => {
                     }
                     item.answers.isSelected = false
                     answers.push(item.answers)
-                    // console.log("item answers: ", item.answers)
                 })
-                // console.log('value: ', value, ' key: ', key)
 
                 return { questionId: key, answers: answers, questionDescription, image }
             })
             .value()
-            // console.log(data)
             setDataQuiz(data)
         }
     }
-    console.log(">>> Check dataQuiz: ", dataQuiz)
 
     const handlePrev = () => {
         if (index - 1 < 0) return
@@ -62,22 +57,43 @@ const DetailQuiz = (props) => {
         let dataQuizClone = _.cloneDeep(dataQuiz) // React Hook doesn't merge state
         let question = dataQuizClone.find(item => +item.questionId === +questionId) // + convert to number
         if (question && question.answers) {
-            // console.log("q: ", question)
-
-            // let b = question.answers.map(item => {
             question.answers = question.answers.map(item => {
                 if(+item.id === +answerId){
                     item.isSelected = !item.isSelected
                 }
                 return item
             })
-            // console.log(b)
-            // question.answers = b
         }
         let index = dataQuizClone.findIndex(item => +item.questionId === +questionId)
         if (index > -1) { // nếu tìm thấy thì nó sẽ trả ra vị trí của phần tử, không tìm thấy trả ra -1
             dataQuizClone[index] = question
             setDataQuiz(dataQuizClone)
+        }
+    }
+
+    const handleFinishQuiz = () => {
+        console.log(">>> check data before submit: ", dataQuiz)
+        let payload = {
+            quizId: +quizId, // "+" to covert to integer
+            answers: []
+        }
+        let answers = []
+        if (dataQuiz && dataQuiz.length > 0){
+            dataQuiz.forEach(question => {
+                let questionId = question.questionId
+                let userAnswerId = []
+                question.answers.forEach(a => { // vòng lặp bên trong vòng lặp video Lesson 87 12:56
+                    if(a.isSelected === true) {
+                        userAnswerId.push(a.id)
+                    }
+                })
+                answers.push ({
+                    questionId: +questionId, // "+" to covert to integer
+                    userAnswerId: userAnswerId
+                })
+            })
+            payload.answers = answers
+            console.log("Final payload: ", payload)
         }
     }
 
@@ -109,7 +125,7 @@ const DetailQuiz = (props) => {
                     >Next</button>
                     <button 
                         className="btn btn-warning"
-                        onClick = {() => handleNext()}
+                        onClick = {() => handleFinishQuiz()}
                     >Finish</button>
                 </div>
             </div>
