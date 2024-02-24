@@ -2,13 +2,13 @@ import "react-pro-sidebar/dist/css/styles.css";
 import {ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar";
 import {FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart} from "react-icons/fa";
 import sidebarBg from "../../assets/bg2.jpg";
-
 import {DiReact} from "react-icons/di"
 import {MdDashboard} from "react-icons/md"
 import './SideBar.scss'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SideBar = (props) => {
+    const navigate = useNavigate()
     const { image, collapsed, toggled, handleToggleSidebar } = props;
 
     return (
@@ -34,7 +34,9 @@ const SideBar = (props) => {
                         }}
                     >
                         <DiReact size = {'3em'} color = {"00bfff"} />
-                        <span> HOI DAN IT </span>
+                        <span onClick={() => navigate("/")}> 
+                                HOI DAN IT
+                        </span>
                     </div>
                 </SidebarHeader>
 
@@ -52,11 +54,16 @@ const SideBar = (props) => {
                             icon = {<FaGem />}
                             title = "Features"
                         >
-                            <MenuItem> 
+                            <MenuItem>
                                 Quản lý Users
                                 <Link to = "/admins/manage-users"/>
                             </MenuItem>
-                            <MenuItem> Quản lý Bài Quiz</MenuItem>
+                            <MenuItem> 
+                                <span className="Quan-ly-Bai-Quiz" onClick={() => navigate("/admins/manage-quizzes")}>
+                                    Quản lý Bài Quiz
+                                </span>
+                                {/* <Link to = "/admins/manage-quizzes"/> */}
+                            </MenuItem>
                             <MenuItem> Quản lý câu hỏi</MenuItem>
                         </SubMenu>
                     </Menu>
@@ -70,13 +77,11 @@ const SideBar = (props) => {
                         }}
                     >
                         <a
-                            // href="https://github.com/azouaoui-med/react-pro-sidebar"
                             href = "https://haryphamdev.github.io/hoidanit-udemy/"
                             target="_blank"
                             className="sidebar-btn"
                             rel="noopener noreferrer"
                         >
-                            {/* <FaGithub /> */}
                             <span
                                 style={{
                                     whiteSpace: "nowrap",
