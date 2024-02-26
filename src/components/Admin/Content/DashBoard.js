@@ -1,3 +1,5 @@
+import Accordion from 'react-bootstrap/Accordion';
+
 const DashBoard = (props) => {
     return (
         <div>

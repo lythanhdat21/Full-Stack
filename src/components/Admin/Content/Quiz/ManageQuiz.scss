@@ -1,13 +1,17 @@
 .quiz-container {
-    padding: 15px;
+    // padding: 15px;
 
     .title {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 600;
     }
 
     legend {
         font-siz: 13px
+    }
+
+    .list-detail{
+        padding: 15px;
     }
 }
 
