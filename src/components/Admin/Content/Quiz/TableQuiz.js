@@ -19,7 +19,8 @@ const TableQuiz = (props) => {
     return (
         <>
             <div>List Quizzes: </div>
-            <table className="table table-hover table-bordered mt-2">
+            <table className="table table-hover table-bordered my-2"> 
+            {/*my: margin-top và margin-bottom lấy theo trục OY */}
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
