@@ -3,37 +3,35 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {FcPlus} from 'react-icons/fc'
 import { toast } from 'react-toastify';
-import { putUpdateUser } from '../../../services/apiService';
 import _ from 'lodash' // Lesson 63 20:12
+import { putUpdateQuizForAdmin } from '../../../../services/apiService';
 
-const ModalUpdateUser = (props) => {
+const ModalUpdateQuiz = (props) => {
     const {show, setShow, dataUpdate} = props // biến props là một biến object
 
     const handleClose = () => {
         setShow(false);
-        setEmail("")
-        setPassword("")
-        setUsername("")
-        setRole("USER")
+        setName("")
+        setDescription("")
+        setDifficulty("")
         setImage("")
         setPreviewImage("")
-        props.resetUpdateData()
+        props.setDataUpdate() //
     }
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [username, setUsername] = useState("")
-    const [role, setRole] = useState("USER")
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
+    const [difficulty, setDifficulty] = useState("")
     const [image, setImage] = useState("")
     const [previewImage, setPreviewImage] = useState("")
 
     // useEffect = componentDidMount
     useEffect (() =>{
-        console.log('>>> Run use Effect: ', dataUpdate)
+        // console.log('>>> Run use Effect: ', dataUpdate)
         if(!_.isEmpty(dataUpdate)){ // Nếu biến dataUpdate không rỗng
             //Update State
-            setEmail(dataUpdate.email)
-            setUsername(dataUpdate.username)
-            setRole(dataUpdate.role)
+            setName(dataUpdate.name)
+            setDescription(dataUpdate.description)
+            setDifficulty(dataUpdate.difficulty)
             setImage("")
             if (dataUpdate.image) {
                 setPreviewImage(`data:image/jpeg;base64,${dataUpdate.image}`) // vì APIs đang trả ra thuộc tính image
@@ -50,39 +48,19 @@ const ModalUpdateUser = (props) => {
         }
     }
 
-    const validateEmail = (email) => {
-        return String(email)
-            .toLowerCase()
-            .match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            );
-        };
+    const handSubmitUpdateQuiz = async () => {
+        let data = await putUpdateQuizForAdmin (dataUpdate.id, description, name, difficulty, image)
 
-    const handSubmitCreateUser = async() => {
-        // validate
-        const isValidEmail = validateEmail(email)
-        if(!isValidEmail) {
-            toast.error('Invalid email')
-            // toast.success('test success')
-            // toast.info('test information')
-            return
-        }
-
-        let data = await putUpdateUser (dataUpdate.id, username, role, image)
         if(data && data.EC === 0) {
             toast.success(data.EM)
             handleClose() // reset lại giá trị của React
-            // await props.fetchListUsers() // bằng với fetchListUsers của ManageUser.js
-            // props.setCurrentPage (1) // cập nhật trạng thái người dùng ở trang 1
-            await props.fetchListUsersWithPaginate(props.currentPage)
+            await props.fetchQuiz()
         }
 
-        if(data && data.EC !== 0) { // Delete res
-            toast.error(data.EM) // Delete res
+        if(data && data.EC !== 0) {
+            toast.error(data.EM)
         }
     }
-
-    // console.log ('Check data render: data Update: ', dataUpdate)
     
     return (
         <>
@@ -94,51 +72,40 @@ const ModalUpdateUser = (props) => {
                 className = "modal-add-user"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Update a user</Modal.Title>
+                    <Modal.Title>Update The Quizz</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form className="row g-3">
-                        <div className="col-md-6">
-                            <label className="form-label">Email</label>
-                            <input 
-                                type="email" 
-                                className="form-control" 
-                                value ={email}
-                                disabled = {true}
-                                onChange = {(event) => setEmail(event.target.value)}
-                            />
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="form-label">Password</label>
-                            <input 
-                                type="password" 
-                                className="form-control" 
-                                value = {password}
-                                disabled = {true}
-                                onChange = {(event) => setPassword(event.target.value)}
-                            />
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="form-label">Username</label>
+                    <div className="col-md-6">
+                            <label className="form-label">Name</label>
                             <input 
                                 type="text" 
                                 className="form-control" 
-                                value={username}
-                                onChange={(event) => setUsername(event.target.value)}
+                                value={name}
+                                onChange={(event) => setName(event.target.value)}
+                            />
+                        </div>
+
+                        <div className="col-md-6">
+                            <label className="form-label">Description</label>
+                            <input 
+                                type="text" 
+                                className="form-control" 
+                                value ={description}
+                                onChange = {(event) => setDescription(event.target.value)}
                             />
                         </div>
 
                         <div className="col-md-4">
-                            <label className="form-label">Role </label>
+                            <label className="form-label">Difficulty </label>
                             <select 
                                 className="form-select" 
-                                onChange = {(event) => setRole(event.target.value)}
-                                value = {role}
+                                onChange = {(event) => setDifficulty(event.target.value)}
+                                value = {difficulty}
                             >
-                                <option value = "USER">USER</option>
-                                <option value = "ADMIN">ADMIN</option>
+                                <option value = "EASY">EASY</option>
+                                <option value = "MEDIUM">MEDIUM</option>
+                                <option value = "HARD">HARD</option>
                             </select>
                         </div>
                         <div className = 'col-md-12'>
@@ -166,7 +133,7 @@ const ModalUpdateUser = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={() => handSubmitCreateUser()}>
+                    <Button variant="primary" onClick={() => handSubmitUpdateQuiz()}>
                         Save
                     </Button>
                 </Modal.Footer>
@@ -174,5 +141,5 @@ const ModalUpdateUser = (props) => {
         </>
     );
 }
-export default ModalUpdateUser
+export default ModalUpdateQuiz
 

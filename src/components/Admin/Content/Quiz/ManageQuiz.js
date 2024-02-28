@@ -10,7 +10,7 @@ const options = [
     { value: 'EASY', label: 'EASY' },
     { value: 'MEDIUM', label: 'MEDIUM' },
     { value: 'HARD', label: 'HARD' },
-  ];
+];
 
 const ManageQuiz = (props) => {
     const [name, setName] = useState("")
