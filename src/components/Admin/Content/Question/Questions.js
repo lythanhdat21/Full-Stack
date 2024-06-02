@@ -11,11 +11,11 @@ import _ from "lodash";
 import Lightbox from "react-awesome-lightbox";
 import { getAllQuizForAdmin, postCreateNewQuestionForQuiz,
     postCreateNewAnswerForQuestion } from "../../../../services/apiService"
+import { toast } from 'react-toastify';
 
 
 const Questions = (props) => {
-
-    const [questions, setQuestions] = useState([
+    const initQuestions = [
         {
             id: uuidv4(),
             description: "",
@@ -30,7 +30,26 @@ const Questions = (props) => {
             ]
 
         },
-    ])
+    ]
+
+    const [questions, setQuestions] = useState(initQuestions
+        // [
+        //     {
+        //         id: uuidv4(),
+        //         description: "",
+        //         imageFile: "",
+        //         imageName: "", 
+        //         answers: [
+        //             {
+        //                 id: uuidv4(),
+        //                 description: "",
+        //                 isCorrect: false
+        //             },
+        //         ]
+
+        //     },
+        // ]
+    )
 
     const [isPreviewImage, setIsPreviewImage] = useState(false)
     
@@ -151,26 +170,64 @@ const Questions = (props) => {
     }
     
     const handleSubmitQuestionForQuiz = async() => {
+        // todo
+        if(_.isEmpty(selectedQuiz)){
+            toast.error("Please choose a Quiz!")
+            return
+        }
 
-        // console.log('questions: ', questions, selectedQuiz)
-        // postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion
+        // validate answer
+        let isValidAnswer = true
+        let indexQ = 0, indexA = 0
+        for (let i =0; i < questions.length; i++){           
+            for (let j = 0; j < questions[i].answers.length; j++){
+                if(!questions[i].answers[j].description){ // nếu câu hỏi chưa được điền vào
+                    isValidAnswer = false
+                    indexA = j
+                    break
+                }
+            }
+            // Trước khi thoát ra chúng ta cần biết, chúng ta đang sai ở câu hỏi nào:
+            indexQ = i 
+            // Trường hợp có 3 câu hỏi trở lên, câu thứ 2 không điền thì tự động break, không chạy vào câu hỏi thứ 3:
+            if (isValidAnswer === false) break 
+        }
+        if(isValidAnswer === false){
+            toast.error(`Not empty Answer ${indexA + 1} at Question ${indexQ + 1}`)
+            return
+        }
+          
+        // validate question
+        let isValidQ = true
+        let indexQ1 = 0
+        for (let i =0; i < questions.length; i++){           
+            if (!questions[i].description){
+                isValidQ = false
+                indexQ1 = i
+                break
+            }
+        }
 
+        if (isValidQ === false) {
+            toast.error(`Not empty description for Question ${indexQ1 + 1}`)
+            return
+        }
+        
         // submit questions
-        await Promise.all (questions.map(async (question) => {
+        for (const question of questions) { // of: lặp từng đối tượng 1, không lặp theo index
             const q = await postCreateNewQuestionForQuiz(
-                +selectedQuiz.value, 
-                question.description, 
+                +selectedQuiz.value,
+                question.description,
                 question.imageFile)
-
-            // submit answers
-            await Promise.all (question.answers.map(async(answer) => {
+            // submit answer
+            for (const answer of question.answers){
                 await postCreateNewAnswerForQuestion(
-                answer.description, answer.isCorrect, q.DT.id
+                    answer.description, answer.isCorrect, q.DT.id
                 )
-            }));
-            // console.log("check q: ", q)
-            
-        }));
+            }  
+        }
+        toast.success("Create questions and answers were succeed")
+        setQuestions(initQuestions)
     }
     
     const handlePreviewImage = (questionId) => {
@@ -184,8 +241,6 @@ const Questions = (props) => {
             setIsPreviewImage(true)
         }
     }
-    
-    // console.log(">>> listQuiz", listQuiz) 
 
     return(
         <div className="questions-container">
