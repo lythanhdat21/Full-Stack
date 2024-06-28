@@ -19,9 +19,9 @@ const Admin = (props) =>{
                 </div>
                 {/* <PerfectScrollbar> */}
                     <div className="admin-main">
-                    <PerfectScrollbar>
-                        <Outlet/>
-                    </PerfectScrollbar>
+                        <PerfectScrollbar>
+                            <Outlet/>
+                        </PerfectScrollbar>
                     </div>
                 {/* </PerfectScrollbar> */}
             </div>

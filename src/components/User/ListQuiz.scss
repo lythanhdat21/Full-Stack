@@ -1,6 +1,7 @@
 .list-quiz-container{
     display: flex; // Dàn theo chiều ngang
     gap: 50px; // Khoảng cách 100 px
+    flex-wrap: wrap;
 }
 
 

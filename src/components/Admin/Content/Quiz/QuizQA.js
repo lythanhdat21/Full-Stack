@@ -9,7 +9,7 @@ import { RiImageAddFill } from "react-icons/ri";
 import { v4 as uuidv4 } from 'uuid';
 import _ from "lodash";
 import Lightbox from "react-awesome-lightbox";
-import { getAllQuizForAdmin, postCreateNewQuestionForQuiz,
+import { getQuizWithQA, getAllQuizForAdmin, postCreateNewQuestionForQuiz,
     postCreateNewAnswerForQuestion } from "../../../../services/apiService"
 import { toast } from 'react-toastify';
 
@@ -43,10 +43,20 @@ const QuizQA = (props) => {
 
     const [listQuiz, setListQuiz] = useState([])
     const [selectedQuiz, setSelectedQuiz] = useState({})
+    // console.log(">>> selectedQuiz", selectedQuiz)
 
     useEffect (() => {
         fetchQuiz()
     }, [])
+
+    useEffect (() => {
+        fetchQuizWithQA()
+    }, [selectedQuiz])
+
+    const fetchQuizWithQA = async() => {
+        let rs = await getQuizWithQA(selectedQuiz.value)
+        console.log(">>> check rs: ", rs)
+    }
 
     const fetchQuiz = async () => {
         let res = await getAllQuizForAdmin()
