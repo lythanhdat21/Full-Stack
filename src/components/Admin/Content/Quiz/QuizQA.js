@@ -50,12 +50,39 @@ const QuizQA = (props) => {
     }, [])
 
     useEffect (() => {
-        fetchQuizWithQA()
+        if (selectedQuiz && selectedQuiz.value){
+            fetchQuizWithQA()
+        }
     }, [selectedQuiz])
+
+    // return a promise that resolves with a File instance
+    function urltoFile(url, filename, mimeType){
+        return fetch(url)
+            .then(res => res.arrayBuffer())
+            .then(buf => new File([buf], filename,{type:mimeType}));
+    }
+    // //Usage example:
+    // urltoFile('data:text/plain;base64,aGVsbG8=', 'hello.txt','text/plain')
+    // .then(function(file){ console.log(file);});
 
     const fetchQuizWithQA = async() => {
         let rs = await getQuizWithQA(selectedQuiz.value)
-        console.log(">>> check rs: ", rs)
+        if (rs && rs.EC === 0) {
+            // convert base64 to file object
+            let newQA = []
+            for (let i = 0; i < rs.DT.qa.length; i++){
+                let q = rs.DT.qa[i]
+                if(q.imageFile) {
+                    q.imageName = `Question-${q.id}.png`
+                    q.imageFile = await urltoFile(`data:image/png;base64,${q.imageFile}`, `Question-${q.id}.png`,'image/png')
+                }
+                newQA.push(q)
+            }
+            // setQuestions(rs.DT.qa)
+            setQuestions(newQA)
+            console.log(">>> Check newQA: ", newQA)
+            // console.log(">>> check rs: ", rs)
+        }
     }
 
     const fetchQuiz = async () => {
