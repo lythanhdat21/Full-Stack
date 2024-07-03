@@ -10,7 +10,8 @@ import { v4 as uuidv4 } from 'uuid';
 import _ from "lodash";
 import Lightbox from "react-awesome-lightbox";
 import { getQuizWithQA, getAllQuizForAdmin, postCreateNewQuestionForQuiz,
-    postCreateNewAnswerForQuestion } from "../../../../services/apiService"
+    postCreateNewAnswerForQuestion, 
+    postUpsertQA} from "../../../../services/apiService"
 import { toast } from 'react-toastify';
 
 
@@ -80,7 +81,7 @@ const QuizQA = (props) => {
             }
             // setQuestions(rs.DT.qa)
             setQuestions(newQA)
-            console.log(">>> Check newQA: ", newQA)
+            // console.log(">>> Check newQA: ", newQA)
             // console.log(">>> check rs: ", rs)
         }
     }
@@ -233,23 +234,35 @@ const QuizQA = (props) => {
             return
         }
         
-        // submit questions
-        for (const question of questions) { // of: lặp từng đối tượng 1, không lặp theo index
-            const q = await postCreateNewQuestionForQuiz(
-                +selectedQuiz.value,
-                question.description,
-                question.imageFile)
-            // submit answer
-            for (const answer of question.answers){
-                await postCreateNewAnswerForQuestion(
-                    answer.description, answer.isCorrect, q.DT.id
-                )
-            }  
+        let questionsClone = _.cloneDeep(questions)
+        for (let i = 0; i < questionsClone.length; i++){
+            if (questionsClone[i].imageFile){
+                questionsClone[i].imageFile = await toBase64(questionsClone[i].imageFile)
+            }
         }
-        toast.success("Create questions and answers were succeed")
-        setQuestions(initQuestions)
+        // console.log("QuestionClone: ", questionsClone)
+        
+        // Gọi APIs
+        let res = await postUpsertQA({
+            quizId: selectedQuiz.value,
+            questions: questionsClone
+        })
+
+        console.log(">>> Check questionClone: ", questionsClone)
+        if (res && res.EC === 0){
+            toast.success(res.EM)
+            fetchQuizWithQA() // Để State của React được cập nhật
+        }
+        // console.log(">>> Check rs: ", res)
     }
-    
+
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+    });
+
     const handlePreviewImage = (questionId) => {
         let questionsClone = _.cloneDeep(questions)
         let index = questionsClone.findIndex(item => item.id === questionId)
@@ -261,6 +274,8 @@ const QuizQA = (props) => {
             setIsPreviewImage(true)
         }
     }
+
+    console.log(">>> Check questions: ", questions)
 
     return(
         <div className="questions-container">
