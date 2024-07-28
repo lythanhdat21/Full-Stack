@@ -12,6 +12,7 @@ import ListQuiz from "./components/User/ListQuiz";
 import DetailQuiz from "./components/User/DetailQuiz";
 import ManageQuiz from "./components/Admin/Content/Quiz/ManageQuiz";
 import Questions from "./components/Admin/Content/Question/Questions";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const NotFound = () => {
     return (
@@ -27,11 +28,19 @@ const Layout = (props) => {
             <Routes>
                 <Route path="/" element={<App />}>
                     <Route index element={<HomePage />} /> {/*Nội dung hiển thị mặc định*/}
-                    <Route path="users" element={<ListQuiz />} />
+                    <Route path="users" element={
+                        <PrivateRoute>
+                            <ListQuiz /> {/*ListQuiz trở thành con của PrivateRoute*/}
+                        </PrivateRoute>
+                    } />
                 </Route>
                 <Route path="/quiz/:id" element={<DetailQuiz />} />
 
-                <Route path="/admins" element={<Admin />} >
+                <Route path="/admins" element={
+                        <PrivateRoute>
+                            <Admin />
+                        </PrivateRoute>
+                    } >
                     <Route index element={<DashBoard />} /> {/*Nội dung hiển thị mặc định*/}
                     <Route path="manage-users" element={<ManageUser />} />
                     <Route path="manage-quizzes" element={<ManageQuiz/>}/>
@@ -40,6 +49,7 @@ const Layout = (props) => {
 
                 <Route path = "/login" element={<Login/>}/>
                 <Route path = "/register" element={<Register/>}/>
+                <Route path = "/test" element={<PrivateRoute/>}/>
                 <Route path = "*" element={<NotFound/>}/>
             </Routes>
             <ToastContainer
