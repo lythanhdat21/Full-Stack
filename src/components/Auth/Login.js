@@ -54,6 +54,13 @@ const Login = (props) => {
         }
     }
 
+    const handleKeyDown = (event) => {
+        // console.log("event log: ", event.key, event)
+        if (event && event.key === "Enter") { // hoặc event && event.keyCode: 13
+            handleLogin()
+        }
+    }
+
     return(
         <div className='login-container'>           
             <div className='header'>
@@ -83,6 +90,7 @@ const Login = (props) => {
                         className = "form-control"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
+                        onKeyDown={(event) => handleKeyDown(event)}
                     />
                 </div>
                 <span className='forgot-password'>Forgot password ?</span>

@@ -3,12 +3,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useSelector } from "react-redux"; // Để lấy State của Redux
+import { useDispatch, useSelector } from "react-redux"; // Để lấy State của Redux
+import { logout } from '../../services/apiService';
+import { toast } from 'react-toastify';
+import { doLogout } from '../../redux/action/userAction';
 
 const Header = () => {
     const account = useSelector(state => state.user.account)
     const isAuthenticated = useSelector(state => state.user.isAuthenticated)
-
+    const dispatch = useDispatch()
     const navigate = useNavigate();
 
     const handleLogin = () => {
@@ -17,6 +20,19 @@ const Header = () => {
 
     const handleRegister = () => {
         navigate('/register')
+    }
+
+    const handleLogout = async() => {
+        let rs = await logout(account.email, account.refresh_token)
+        if (rs && rs.EC === 0){
+            // Clear data redux
+            dispatch(doLogout())
+
+            navigate('/login')
+        } else {
+            toast.error (rs.EM)
+        }
+        // console.log("check res: ", rs) 
     }
 
     return (
@@ -42,8 +58,9 @@ const Header = () => {
                         </>
                         : // Trường hợp đã đăng nhập thành công
                         <NavDropdown title = "Settings" id = "basic-nav-dropdown">
-                            <NavDropdown.Item>Log out</NavDropdown.Item>
+                            {/* <NavDropdown.Item>Log out</NavDropdown.Item> */}
                             <NavDropdown.Item>Profile</NavDropdown.Item>
+                            <NavDropdown.Item onClick = {() => handleLogout()}>Log out</NavDropdown.Item>
                         </NavDropdown>
                     }
                 </Nav>
