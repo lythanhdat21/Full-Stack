@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { postRegister } from '../../services/apiService'
+import Language from '../Header/Language';
 
 
 const Register = (props) => {
@@ -43,9 +44,10 @@ const Register = (props) => {
     }
 
     return(
-        <section>
-            <div className='register-box'> 
-                {/* <form action =""> */}
+        <>            
+            <section>
+                <div className='header'><Language/></div>
+                <div className='register-box'> 
                     <h2>Hoi Dan IT</h2>
                     <div className='input-box'>
                         <input 
@@ -106,9 +108,9 @@ const Register = (props) => {
                             &#60; &#60; Go to Homepage
                         </span>
                     </div>   
-                {/* </form>  */}
-            </div>
-        </section>
+                </div>
+            </section>
+        </>
     )
 }
 export default Register

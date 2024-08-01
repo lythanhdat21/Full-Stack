@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux"; // Để lấy State c�
 import { logout } from '../../services/apiService';
 import { toast } from 'react-toastify';
 import { doLogout } from '../../redux/action/userAction';
+import Language from './Language';
 
 const Header = () => {
     const account = useSelector(state => state.user.account)
@@ -58,11 +59,18 @@ const Header = () => {
                         </>
                         : // Trường hợp đã đăng nhập thành công
                         <NavDropdown title = "Settings" id = "basic-nav-dropdown">
-                            {/* <NavDropdown.Item>Log out</NavDropdown.Item> */}
                             <NavDropdown.Item>Profile</NavDropdown.Item>
                             <NavDropdown.Item onClick = {() => handleLogout()}>Log out</NavDropdown.Item>
                         </NavDropdown>
                     }
+
+                    {/* <NavDropdown title = "Việt Nam" id = "basic-nav-dropdown2" className='languages'>
+                        <NavDropdown.Item>English</NavDropdown.Item>
+                        <NavDropdown.Item>Việt Nam</NavDropdown.Item>
+                    </NavDropdown> */}
+
+                    <Language/>
+                    
                 </Nav>
             </Navbar.Collapse>
         </Container>

@@ -15,6 +15,18 @@ section {
     background-size: cover;
     background-position: center;
     animation: animateBg 5s linear infinite;
+
+}
+
+.header {
+    position: absolute;
+    top: 10px; /* You can adjust this value */
+    right: 10px; /* You can adjust this value */
+    padding: 10px;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(247, 247, 9);
+    border-radius: 5px;
 }
 
 @keyframes animateBg {
@@ -215,3 +227,5 @@ h2 {
     color: white;
     padding-top: 15px;
 }
+
+

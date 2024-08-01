@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { postRegister } from '../../services/apiService'
+import Language from '../Header/Language';
 
 
 const Register = (props) => {
@@ -46,6 +47,8 @@ const Register = (props) => {
 
     return(
             <div className='register-container'> 
+                <div className='header'><Language/></div>            
+
                 <div className='title col-4 mx-auto'>
                     HoidanIT
                 </div>
