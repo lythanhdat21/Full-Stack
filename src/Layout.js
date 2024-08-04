@@ -7,13 +7,14 @@ import DashBoard from "./components/Admin/Content/DashBoard";
 import Login from "./components/Auth/Login";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import Register from "./components/Auth/Register1";
-import Register from "./components/Auth/Register";
+import Register from "./components/Auth/Register1";
+// import Register from "./components/Auth/Register";
 import ListQuiz from "./components/User/ListQuiz";
 import DetailQuiz from "./components/User/DetailQuiz";
 import ManageQuiz from "./components/Admin/Content/Quiz/ManageQuiz";
 import Questions from "./components/Admin/Content/Question/Questions";
 import PrivateRoute from "./routes/PrivateRoute";
+import {Suspense} from 'react'
 
 const NotFound = () => {
     return (
@@ -25,7 +26,8 @@ const NotFound = () => {
 
 const Layout = (props) => {
     return(
-        <>
+        // <>
+        <Suspense fallback = {<div>Loading...</div>}>
             <Routes>
                 <Route path="/" element={<App />}>
                     <Route index element={<HomePage />} /> {/*Nội dung hiển thị mặc định*/}
@@ -65,7 +67,8 @@ const Layout = (props) => {
                 pauseOnHover
                 theme="light"
             />
-        </>
+        </Suspense>
+        // </>
     )
 }
 export default Layout

@@ -64,7 +64,7 @@ const Login = (props) => {
 
     return(
         <div className='login-container'>           
-            <div className='header'>
+            <div className='header-login'>
                 <span>Don't have an account yet?</span>
                 <button onClick={() => navigate('/register')}>Sign Up</button>
                 <Language/>
