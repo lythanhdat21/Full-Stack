@@ -39,6 +39,7 @@ const DetailQuiz = (props) => {
                     item.answers.isSelected = false
                     answers.push(item.answers)
                 })
+                answers = _.orderBy(answers, ['id'], ['asc']) // _.orderBy: giúp sắp xếp lại câu hỏi
 
                 return { questionId: key, answers: answers, questionDescription, image }
             })
