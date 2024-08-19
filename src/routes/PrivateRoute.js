@@ -5,7 +5,7 @@ const PrivateRoute = (props) => {
 
     const isAuthenticated = useSelector(state => state.user.isAuthenticated) // copy from Header.js
 
-    console.log(">>> check isAuthenticated: ", isAuthenticated)
+    // console.log(">>> check isAuthenticated: ", isAuthenticated)
 
     if (!isAuthenticated){
         return <Navigate to = "/login"></Navigate>
