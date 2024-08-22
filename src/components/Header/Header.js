@@ -8,12 +8,14 @@ import { logout } from '../../services/apiService';
 import { toast } from 'react-toastify';
 import { doLogout } from '../../redux/action/userAction';
 import Language from './Language';
+import { useTranslation} from "react-i18next";
 
 const Header = () => {
     const account = useSelector(state => state.user.account)
     const isAuthenticated = useSelector(state => state.user.isAuthenticated)
     const dispatch = useDispatch()
     const navigate = useNavigate();
+    const {t} = useTranslation()
 
     const handleLogin = () => {
         navigate('/login')
@@ -43,9 +45,18 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <NavLink to="/" className='nav-link'>Home</NavLink>
-                    <NavLink to="/users" className='nav-link'>Users</NavLink>
-                    <NavLink to="/admins" className='nav-link'>Admin</NavLink>                   
+                    <NavLink to="/" className='nav-link'>
+                        {/* Home */}
+                        {t('header.home')}
+                    </NavLink>
+                    <NavLink to="/users" className='nav-link'>
+                        {/* Users */}
+                        {t('header.user')}
+                    </NavLink>
+                    <NavLink to="/admins" className='nav-link'>
+                        {/* Admin */}
+                        {t('header.admin')}
+                    </NavLink>                   
                 </Nav>
                 <Nav>
                     {isAuthenticated === false ? // Trường hợp chưa đăng nhập:
@@ -58,9 +69,16 @@ const Header = () => {
                             </div>
                         </>
                         : // Trường hợp đã đăng nhập thành công
-                        <NavDropdown title = "Settings" id = "basic-nav-dropdown">
-                            <NavDropdown.Item>Profile</NavDropdown.Item>
-                            <NavDropdown.Item onClick = {() => handleLogout()}>Log out</NavDropdown.Item>
+                        // <NavDropdown title = "Settings" id = "basic-nav-dropdown">
+                        <NavDropdown title = {t('header.setting')} id = "basic-nav-dropdown">
+                            <NavDropdown.Item>
+                                {/* Profile */}
+                                {t('header.profile')}
+                            </NavDropdown.Item>
+                            <NavDropdown.Item onClick = {() => handleLogout()}>
+                                {/* Log out */}
+                                {t('header.logout')}
+                            </NavDropdown.Item>
                         </NavDropdown>
                     }
                     <Language/>

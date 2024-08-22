@@ -1,8 +1,108 @@
 {
     "homepage": {
         "title1": "There's a better way to ask Tony & hoi dan it",
-        "title2": "You don't want to make a boring form."  
+        "title2": "You don't want to make a boring form.",
+        "title3": {
+            "login": "Get's started. It's free",
+            "doing": "Doing Quiz Now"
+        }
+    },
+    "header": {
+        "home": "Home",
+        "user": "Users",
+        "admin": "Admin",
+        "setting": "Setting",
+        "profile": "Profile",
+        "logout": "Log out",
+        "quiz": "Quiz"
+    },
+    "quiz": {
+        "question": "Question",
+        "result": "Result",
+        "total-question": "Total question",
+        "total-correct": "Total correct",
+        "show-answer": "Show answer",
+        "close": "Close"
+    },
+    "login": {
+        "do-not-have": "Don't you have an account yet?",
+        "signup": "Sign up",
+        "welcome": "Hello, who's this?",
+        "email": "Email",
+        "password": "Password",
+        "forgot-pass": "Forgot password ?",
+        "do-login": "Login to HoidanIT",
+        "back": "< < Go to Homepage"
+    },
+    "register": {
+        "adready": "Do you have an account yet?",
+        "login": "Log in",
+        "start": "Fill in quickly",
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "submit": "CREATE MY FREE ACCOUNT",
+        "back": "< < Go to Homepage"
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Analytics dash board",
+            "total-user": "Total users",
+            "total-quiz": "Total quiz",
+            "total-question": "Total question",
+            "total-answer": "Total answer"
+        },
+        "sidebar": {
+            "dashboard": "Dashboard",
+            "manage-user": "Manage User",
+            "manage-quiz": "Manage Quiz",
+            "manage-question": "Manage Questions",
+            "feature": "Feature",
+            "brand": "Hỏi Dân IT"
+        },
+        "manage-users": {
+            "title": "Manage User",
+            "add-new": "Add new users",
+            "role": "Role",
+            "action": "Action",
+            "update": "Update",
+            "delete": "Delete",
+            "view": "View",
+            "modal": {
+                "title": "Update a user",
+                "role": "Role",
+                "t-update": "Update a user",
+                "t-delete": "Confirm Delete the User ?",
+                "confirm": "Are you sure to delete this user",
+                "sure": "Sure",
+                "cancel": "Cancel"
+            }
+        },
+        "manage-quiz": {
+            "a1": "Manage Quizzes",
+            "a2": "Updae Q/A Quizzes",
+            "a3": "Assign to Users",
+            "add-quiz": "Add new Quiz",
+            "quiz-name": "List Quizzes:",
+            "quiz-desc": "Description",
+            "quiz-save": "Save",
+            "quiz-upload": "Upload File Image",
+            "s-quiz": "Select Quiz",
+            "s-user": "Select User người dùng",
+            "a-questions": "Question:",
+            "add-questions": "Add Questions: ",
+            "q": "Question",
+            "a": "Answer",
+            "d": "Description",
+            "u": "Update Quizzes",
+            "q-assign": "Attach Quiz to User",
+            "sq": "Save Question",
+            "tq": "Manage Questions"
+        }
+    },
+    "profile": {
+        "title": "Profile"
     }
-}     
+}
 
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import NProgress from 'nprogress';
 import {store} from "../redux/store"
+import axiosRetry from 'axios-retry';
 
 NProgress.configure({
     showSpinner: false, // không hiển thị vòng tròn quay
@@ -39,10 +40,28 @@ instance.interceptors.response.use(function (response) {
     return response && response.data ? response.data : response;
 }, function (error) {
     NProgress.done();
+
+    // token expired EC === -999
+    // if(error.response.data && error.response.data.EC === -999){
+    //     window.location.href = '/login'
+    // }
+
     // Any status codes that falls outside the range of 2xx (success) cause this function to trigger
     // Do something with response error
     // console.log('>>> run error: ', error.response)
     return error && error.response && error.response.data ? error.response.data : Promise.reject(error);
+});
+
+// Set up axios-retry to automatically retry requests
+axiosRetry(instance, {
+    retries: 3, // Number of retry attempts
+    retryCondition: (error) => {
+        // Retry only on network errors or 5xx server errors
+        return axiosRetry.isNetworkOrIdempotentRequestError(error) || error.response?.status === 500;
+    },
+    retryDelay: (retryCount) => {
+        return retryCount * 1000; // Time between retries in ms (e.g., 1s, 2s, 3s)
+    },
 });
 
 export default instance

@@ -1,7 +1,107 @@
 {
     "homepage": {
         "title1": "Một cách tốt nhất để hỏi",
-        "title2": "Không biết thì google"
+        "title2": "Không biết thì google",
+        "title3": {
+            "login": "Bắt đầu ngay. Hoàn toàn miễn phí.",
+            "doing": "Làm Bài Quiz Now"
+        }
+    },
+    "header": {
+        "home": "Trang chủ",
+        "user": "Người dùng",
+        "admin": "Quản trị",
+        "setting": "Cài đặt",
+        "profile": "Thông tin cá nhân",
+        "logout": "Đăng xuất",
+        "quiz": "Làm bài Quiz"
+    },
+    "quiz": {
+        "question": "Câu hỏi",
+        "result": "Kết quả bài thi...",
+        "total-question": "Tổng số câu hỏi",
+        "total-correct": "Tổng số câu trả lời đúng",
+        "show-answer": "Hiển thị đáp án",
+        "close": "Đóng"
+    },
+    "login": {
+        "do-not-have": "Bạn chưa có tài khoản?",
+        "signup": "Đăng ký",
+        "welcome": "Hello, 500 anh em",
+        "email": "Email",
+        "password": "Mật mã",
+        "forgot-pass": "Quên mật khẩu rồi",
+        "do-login": "Login nào",
+        "back": "Trở về trang chủ"
+    },
+    "register": {
+        "adready": "Bạn đã có tài khoản",
+        "login": "Đăng nhập",
+        "start": "Điền nhanh nào",
+        "email": "Email",
+        "password": "Mật mã",
+        "username": "Tên hiển thị",
+        "submit": "TẠO TẠI KHOẢN",
+        "back": "Trở về trang chủ"
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Thống kê",
+            "total-user": "Tổng users",
+            "total-quiz": "Tổng bài thi",
+            "total-question": "Tổng câu hỏi",
+            "total-answer": "Tổng câu trả lời"
+        },
+        "sidebar": {
+            "dashboard": "Tổng quan",
+            "manage-user": "Quản lý người dùng",
+            "manage-quiz": "Quản lý Quizzes",
+            "manage-question": "Quản lý Questions",
+            "feature": "Chức năng",
+            "brand": "Hỏi Dân IT"
+        },
+        "manage-users": {
+            "title": "Quản lý người dùng",
+            "add-new": "Thêm mới",
+            "role": "Vai trò",
+            "action": "Hành Động",
+            "update": "Sửa",
+            "delete": "Xoá",
+            "view": "Chi tiết",
+            "modal": {
+                "title": "Thêm mới Users",
+                "role": "Vai trò",
+                "t-update": "Cập nhật người dùng",
+                "t-delete": "Xác nhận xoá người dùng?",
+                "confirm": "Bạc có chắc chắn muốn xoá người dùng không?",
+                "sure": "Xác nhận",
+                "cancel": "Huỷ"
+            }
+        },
+        "manage-quiz": {
+            "a1": "Quản lý bài thi",
+            "a2": "Cập nhật Q/A cho bài thi",
+            "a3": "Gán Quiz cho người dùng",
+            "add-quiz": "Thêm bài quiz mới",
+            "quiz-name": "Tên bài Quiz",
+            "quiz-desc": "Miêu tả",
+            "quiz-save": "Lưu",
+            "quiz-upload": "Tải ảnh",
+            "s-quiz": "Chọn Quiz",
+            "s-user": "Chọn người dùng",
+            "a-questions": "Câu hỏi:",
+            "add-questions": "Thêm Câu Hỏi: ",
+            "q": "Câu hỏi",
+            "a": "Đáp án",
+            "d": "Miêu tả",
+            "u": "Cập nhật bài Quiz",
+            "q-assign": "Gán Quiz cho User",
+            "sq": "Lưu câu hỏi",
+            "tq": "Quản lý Questions"
+        }
+    },
+    "profile": {
+        "title": "Tập tin"
     }
 }
 
