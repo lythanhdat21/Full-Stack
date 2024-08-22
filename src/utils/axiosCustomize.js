@@ -46,6 +46,24 @@ instance.interceptors.response.use(function (response) {
     //     window.location.href = '/login'
     // }
 
+    if (error.response?.data?.EC === -999) {
+        // Handle token expiration logic here, e.g., refreshing the token
+        // and retrying the original request.
+
+        // Assuming we have a function `refreshToken` that refreshes the token:
+        return refreshToken().then(newToken => {
+            // Update the token in the Redux store
+            store.dispatch({ type: 'UPDATE_TOKEN', payload: newToken });
+
+            // Update the request with the new token and retry it
+            error.config.headers['Authorization'] = `Bearer ${newToken}`;
+            return axios(error.config);
+        }).catch(refreshError => {
+            window.location.href = '/login';
+            return Promise.reject(refreshError);
+        });
+    }
+
     // Any status codes that falls outside the range of 2xx (success) cause this function to trigger
     // Do something with response error
     // console.log('>>> run error: ', error.response)
