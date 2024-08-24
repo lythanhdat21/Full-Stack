@@ -60,7 +60,9 @@ const ModalCreateUser = (props) => {
         if(data && data.EC !== 0) { // Delete res
             toast.error(data.EM) // Delete res
         }
+        // console.log (data) 
     }
+    
 
     return (
         <>
